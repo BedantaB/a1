@@ -1,28 +1,31 @@
 class Stack:
 
-    list = []
-    length = len(list)
+
+    def __init__(self):
+        self.mlist = []
+
 
     def isEmpty(self):
-        if self.length > 0:
+        if len(self.mlist) > 0:
             return False
         else:
             return True
 
 
     def push(self,x):
-        self.list.append(x)
+        self.mlist.append(x)
 
 
     def top(self):
         if not self.isEmpty():
-            return self.list[self.length - 1]
+            return self.mlist[-1]
 
     
     def pop(self):
         if not self.isEmpty():
-            a = self.list.pop(self.length - 1)
-            return a
+            return self.mlist.pop()
+
+
 
 
 def is_number(s):
