@@ -54,6 +54,9 @@ def findPositionandDistance(S):
     y = 0
     z = 0
     d = 0
+
+    isnumber = 0
+    num = 0
     
     i = 0
     while i < len(P):
@@ -143,24 +146,34 @@ def findPositionandDistance(S):
 
 
         elif is_number(P[i]):
+
+            if isnumber == 0:
+                num = int(P[i])
+            else:
+                num = num*10 + int(P[i])
+
+
+            if(is_number(P[i+1])):
+                isnumber = 1
+            else:
+                isnumber = 0
+                X += (ls_brack.top())*x
+                Y += (ls_brack.top())*y
+                Z += (ls_brack.top())*z
+                D += (ls_brack.top())*d
+
+                ls_brack.push(num*ls_brack.top())
+
+                x = 0
+                y = 0
+                z = 0
+                d = 0
+                num = 0
+
+
             a = 1
-
-            X += (ls_brack.top())*x
-            Y += (ls_brack.top())*y
-            Z += (ls_brack.top())*z
-            D += (ls_brack.top())*d
-
-            ls_brack.push(int(P[i])*ls_brack.top())
-
-            x = 0
-            y = 0
-            z = 0
-            d = 0
 
 
         i+=1
 
     return[X, Y, Z, D]
-
-
-print(findPositionandDistance("((+X2(+Y-X-Z)8(+Y)9(-Z-Z)))"))
